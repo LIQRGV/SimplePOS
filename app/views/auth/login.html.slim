@@ -1,0 +1,24 @@
+h5 Silahkan Login</h5>
+= form_for :employee, as: :post, url: auth_authorize_path do |form|
+  table border="0" align="center"
+    tr
+      td
+        | Username
+      td
+        | :
+      td
+        = form.text_field :username, placeholder: "Username..."
+
+    tr
+      td
+        | Password
+      td
+        | :
+      td
+        = form.password_field :password, placeholder: "Password..."
+
+    tr
+      td
+      td
+      td
+        = form.submit "Login"
