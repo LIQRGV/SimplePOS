@@ -11,13 +11,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170509210000) do
+ActiveRecord::Schema.define(version: 20170509210004) do
 
   create_table "employees", force: :cascade do |t|
-    t.string "username",                 null: false
-    t.string "employee_name",            null: false
-    t.string "position",                 null: false
-    t.string "password",      limit: 32, null: false
+    t.string  "username",                 null: false
+    t.string  "employee_name",            null: false
+    t.string  "password",      limit: 32, null: false
+    t.integer "role_id"
   end
+
+  create_table "employees_roles", id: false, force: :cascade do |t|
+    t.integer "employee_id", null: false
+    t.integer "role_id"
+  end
+
+  add_index "employees_roles", ["role_id", "employee_id"], name: "index_employees_roles_on_role_id_and_employee_id"
+
+  create_table "roles", force: :cascade do |t|
+    t.string "role_name"
+  end
+
+  add_index "roles", [nil], name: "index_roles_on_role_id"
 
 end
