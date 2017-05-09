@@ -1,4 +1,4 @@
-class CreateEmployee < ActiveRecord::Migration
+class CreateEmployees < ActiveRecord::Migration
   def change
     create_table :employees do |t|
       t.index :employee_id
