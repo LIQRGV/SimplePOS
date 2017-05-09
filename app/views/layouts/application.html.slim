@@ -6,5 +6,9 @@ html
     = csrf_meta_tags
 
   body
-    == yield
+    .header
+      /= render partial: "layout/headers/header_#{@role}"
+    .content
+      == yield
+    .footer
 
