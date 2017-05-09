@@ -4,6 +4,20 @@ class AuthController < ApplicationController
   end
 
   def authorize
-    render nothing: true, status: :found
+    # hashing will done on client side
+    username = params[:username]
+    password = params[:password]
+
+    employee = Employee.where(username: username, password: password)
+
+    if employee.present?
+      session[:user] = employee
+      redirect_to :auth_login
+      # redirect_to :home
+    else
+      redirect_to :auth_login
+    end
+
+
   end
 end
