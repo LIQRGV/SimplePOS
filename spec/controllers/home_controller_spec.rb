@@ -8,32 +8,9 @@ describe HomeController, type: :controller do
   end
 
   describe "POST #change_quote" do
-    let(:owner) do
-      employee = create :employee, username: 'owner', password: 'password'
-      role = create :role_owner
-      role.save
-      employee.role = [role]
-      employee.save
-      Employee.find(employee.id)
-    end
-
-    let(:supervisor) do
-      employee = create :employee, username: 'supervisor', password: 'password'
-      role = create :role_supervisor
-      role.save
-      employee.role = [role]
-      employee.save
-      Employee.find(employee.id)
-    end
-
-    let(:cashier) do
-      employee = create :employee, username: 'cashier', password: 'password'
-      role = create :role_cashier
-      role.save
-      employee.role = [role]
-      employee.save
-      Employee.find(employee.id)
-    end
+    let(:owner) { create :employee_owner, username: 'owner', password: 'password' }
+    let(:supervisor) { create :employee_supervisor, username: 'supervisor', password: 'password' }
+    let(:cashier) { create :employee_cashier, username: 'cashier', password: 'password' }
 
     context "when user is owner" do
       it "will accept quote post" do
@@ -44,7 +21,7 @@ describe HomeController, type: :controller do
     end
     context "when user is not owner" do
       it "won't accept quote post" do
-        [supervisor, cashier].each do |role|
+        [supervisor, cashier, nil].each do |role|
           session[:user] = role
           post :change_quote, quote: 'some quote here'
           expect(response).to have_http_status(:unauthorized)

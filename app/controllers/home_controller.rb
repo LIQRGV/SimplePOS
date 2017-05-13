@@ -1,10 +1,9 @@
 class HomeController < ApplicationController
   def home
-    render nothing: true
   end
 
   def change_quote
-    if session[:user].is_owner?
+    if (!session[:user].nil?) && session[:user].is_owner?
       redirect_to :home
     else
       render nothing: true, status: :unauthorized

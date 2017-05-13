@@ -1,0 +1,18 @@
+h5
+  = "Selamat Datang"
+- @presenter.quotes.each do |quote|
+    br
+    = quote
+
+- if @presenter.allow_edit_quotes?
+  = form_for :quotes, as: :post, url: change_quote_path do |form|
+    br
+    / why this submit here?
+    = form.submit "Submit"
+    / why you need to loop ? Is it suppose to be many quote?
+    - @presenter.quotes.each do |quote|
+      br
+      br
+      = form.text_area :quote, value: quote
+      / got another submit ? Yah, submit yourself to the god
+      = form.submit "Submit"

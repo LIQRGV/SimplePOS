@@ -3,27 +3,38 @@ FactoryGirl.define do
     username "some_username"
     employee_name "some_name"
     password "some_password"
-    role_id -1
   end
 
   factory :employee_owner, class: Employee do
     username "pemilik_username"
     employee_name "pemilik_name"
     password "pemilik_password"
-    role_id 1
+    after(:create) do |employee, evaluator|
+      role = create :role_owner
+      employee.role = [role]
+      employee.save
+    end
   end
 
   factory :employee_supervisor, class: Employee do
     username "supervisor_username"
     employee_name "supervisor_name"
     password "supervisor_password"
-    role_id 2
+    after(:create) do |employee, evaluator|
+      role = create :role_supervisor
+      employee.role = [role]
+      employee.save
+    end
   end
 
   factory :employee_cashier, class: Employee do
     username "kasir_username"
     employee_name "kasir_name"
     password "kasir_password"
-    role_id 3
+    after(:create) do |employee, evaluator|
+      role = create :role_cashier
+      employee.role = [role]
+      employee.save
+    end
   end
 end
