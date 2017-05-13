@@ -6,21 +6,21 @@ FactoryGirl.define do
     role_id -1
   end
 
-  factory :employee_owner do
+  factory :employee_owner, class: Employee do
     username "pemilik_username"
     employee_name "pemilik_name"
     password "pemilik_password"
     role_id 1
   end
 
-  factory :employee_supervisor do
+  factory :employee_supervisor, class: Employee do
     username "supervisor_username"
     employee_name "supervisor_name"
     password "supervisor_password"
     role_id 2
   end
 
-  factory :employee_cashier do
+  factory :employee_cashier, class: Employee do
     username "kasir_username"
     employee_name "kasir_name"
     password "kasir_password"

@@ -12,12 +12,9 @@ class AuthController < ApplicationController
 
     if employee.present?
       session[:user] = employee
-      redirect_to :auth_login
-      # redirect_to :home
+      redirect_to :home
     else
       redirect_to :auth_login
     end
-
-
   end
 end

@@ -14,8 +14,8 @@ describe AuthController, type: :controller do
     context "when authorization success" do
       it "will redirect to home and create session" do
         post :authorize, username: 'user', password: 'password'
-        # expect(response).to have_http_status(:redirect)
-        # expect(response).to redirect_to(:home)
+        expect(response).to have_http_status(:redirect)
+        expect(response).to redirect_to(:home)
         expect(session[:user]).not_to eq nil
       end
     end

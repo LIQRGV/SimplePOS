@@ -1,6 +1,6 @@
 ul
   li
-    - @presenter.access_role.each do |url_and_text_pair|
+    - @presenter.header_menu.each do |url_and_text_pair|
       - url = url_and_text_pair[:url]
       - text = url_and_text_pair[:text]
       a href=url_for(url)

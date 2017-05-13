@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe "layouts/application.html.slim", type: :view do
-  let(:access_role) {
+  let(:header_menu) {
     [
       {
         url: "someUrl1", 
@@ -14,7 +14,7 @@ describe "layouts/application.html.slim", type: :view do
     ]
   }
   before do
-    presenter_double = instance_double("Presenter", access_role: access_role)
+    presenter_double = instance_double("Presenter", header_menu: header_menu)
     assign(:presenter, presenter_double)
   end
 
