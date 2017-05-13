@@ -18,7 +18,7 @@ class HomePresenter < BasePresenter
   end
 
   def quotes
-
+    Quote.pluck(:quote)
   end
 
   def allow_edit_quotes?

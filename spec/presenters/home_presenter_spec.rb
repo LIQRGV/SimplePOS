@@ -4,7 +4,19 @@ describe HomePresenter do
   include_examples "a presenter"
 
   context "#quotes" do
+    before do
+      create :quote, quote: "First quote"
+      create :quote, quote: "Second quote"
+    end
 
+    it "will return all quotes" do
+      expected_quotes = [
+        "First quote",
+        "Second quote",
+      ]
+      presenter = HomePresenter.new
+      expect(presenter.quotes).to match_array(expected_quotes)
+    end
   end
 
   context "#allow_edit_quotes?" do
