@@ -1,9 +1,15 @@
 Rails.application.routes.draw do
+  get 'api/goods/similar' => 'api/goods#similar'
+
   get 'auth/login' => 'auth#login'
   post 'auth/authorize' => 'auth#authorize'
 
-  get 'home' => 'home#home'
+  get 'home' => 'home#index'
   post 'home/change_quote' => 'home#change_quote'
+
+  get 'sales' => 'sales#index'
+  post 'sales/insert_transaction' => 'sales#insert_transaction'
+  delete 'sales/delete_transaction' => 'sales#delete_transaction'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

@@ -1,0 +1,65 @@
+h5
+  = "Halaman Penjualan Umum"
+br
+font color="#3333FF" size=3
+  = "KASIR APOTEK TBS"
+br
+br
+/TODO change to ajax later
+= form_for :goods_check, as: :post, url: api_goods_similar_path do |form|
+  table border="0"
+    tr
+      td
+        | Jumlah
+      td
+        | :
+      td
+        = form.text_field :quantity, placeholder: "harus diisi..!", autocomplete: "off", value: 1, required: true
+    tr
+      td
+        | Nama obat
+      td
+        | :
+      td
+        = form.text_field :goods_id, placeholder: "harus diisi..!", autocomplete: "off", required: true
+        div id="ajax_result"
+    tr
+      td
+      td
+      td
+        = form.submit "INPUT"
+
+= form_for :transaction, as: :post, url: sales_insert_transaction_path do |form|
+  br
+  br
+  | No Kartu :
+  = form.text_field :id_credit_card, autocomplete: false
+  | Cash :
+  = form.text_field :cash, autocomplete: false, placeholder: 'harus diisi..!'
+  = form.submit "CONFIRM"
+
+  /TODO: Fill this table via ajax
+  table border="0" align="center"
+    th bgcolor="#00FFFF" align="center"
+      td width="400"
+        | Nama Obat
+      td width="75"
+        | Satuan
+      td width="75"
+        | Harga
+      td width="50"
+        | QTY
+      td width="50"
+        | Sub Total
+      td width="100"
+        | Opr
+
+  br
+  font size="5" id="paid_amount"
+    | Rp. 0,00
+  br
+  br
+
+  /TODO: make this things just clear the transaction
+  = form_for :canceling, as: :post, url: sales_delete_transaction_path do |form|
+    = form.submit "BATALKAN TRANSAKSI"
