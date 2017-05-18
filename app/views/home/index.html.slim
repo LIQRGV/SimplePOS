@@ -5,7 +5,7 @@ h5
     = quote
 
 - if @presenter.allow_edit_quotes?
-  = form_for :quotes, as: :post, url: change_quote_path do |form|
+  = form_for :quotes, as: :post, url: home_change_quote_path do |form|
     br
     / why this submit here?
     = form.submit "Submit"
