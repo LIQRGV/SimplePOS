@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe "home/home.html.slim", type: :view do
+describe "home/index.html.slim", type: :view do
   let(:quotes) { ["Some wise word here"] }
   let(:no_quotes) { [] }
   let(:presenter_without_quotes_and_allowed_to_edit) { instance_double('PresenterWithoutQuotes', quotes: no_quotes, allow_edit_quotes?: true) }
