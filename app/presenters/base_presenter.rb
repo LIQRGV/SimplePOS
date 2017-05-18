@@ -25,28 +25,34 @@ class BasePresenter
     headers_collection = {
       owner: [
         {
-          text: 'home',
+          text: 'Home',
           url: url_helpers.home_path,
+        }, {
+          text: 'P Umum',
+          url: url_helpers.sales_path,
         }
       ],
       supervisor: [
         {
-          text: 'home',
+          text: 'Home',
           url: url_helpers.home_path,
         }
       ],
       cashier: [
         {
-          text: 'home',
+          text: 'Home',
           url: url_helpers.home_path,
+        }, {
+          text: 'P Umum',
+          url: url_helpers.sales_path,
         }
       ],
       other: [
         {
-          text: 'home',
+          text: 'Home',
           url: url_helpers.home_path,
         },{
-          text: 'login',
+          text: 'Login',
           url: url_helpers.auth_login_path,
         }
       ]

@@ -7,18 +7,18 @@ describe BasePresenter do
 
   describe "#header_menu" do
     it "should not raise error" do
-      presenter = described_class.new
+      presenter = BasePresenter.new
       expect { presenter.header_menu }.not_to raise_error
     end
 
     it "should not empty" do
-      presenter = described_class.new
+      presenter = BasePresenter.new
       url_and_text_pair = presenter.header_menu
       expect(url_and_text_pair.length > 0).to eq true
     end
 
     it "should contain text and url in pair" do
-      presenter = described_class.new
+      presenter = BasePresenter.new
       url_and_text_pairs = presenter.header_menu
       url_and_text_pairs.each do |pair|
         expect(pair[:url]).not_to eq nil
@@ -32,10 +32,10 @@ describe BasePresenter do
         header_menu = presenter.header_menu
         expected_header = [
           {
-            text: 'home',
+            text: 'Home',
             url: url_helpers.home_path,
           },{
-            text: 'login',
+            text: 'Login',
             url: url_helpers.auth_login_path,
           }
         ]
@@ -53,8 +53,11 @@ describe BasePresenter do
         header_menu = presenter.header_menu
         expected_header = [
           {
-            text: 'home',
+            text: 'Home',
             url: url_helpers.home_path,
+          }, {
+            text: 'P Umum',
+            url: url_helpers.sales_path,
           }
         ]
 
@@ -71,7 +74,7 @@ describe BasePresenter do
         header_menu = presenter.header_menu
         expected_header = [
           {
-            text: 'home',
+            text: 'Home',
             url: url_helpers.home_path,
           }
         ]
@@ -89,8 +92,11 @@ describe BasePresenter do
         header_menu = presenter.header_menu
         expected_header = [
           {
-            text: 'home',
+            text: 'Home',
             url: url_helpers.home_path,
+          }, {
+            text: 'P Umum',
+            url: url_helpers.sales_path,
           }
         ]
 
@@ -104,10 +110,10 @@ describe BasePresenter do
         header_menu = presenter.header_menu
         expected_header = [
           {
-            text: 'home',
+            text: 'Home',
             url: url_helpers.home_path,
           },{
-            text: 'login',
+            text: 'Login',
             url: url_helpers.auth_login_path,
           }
         ]
