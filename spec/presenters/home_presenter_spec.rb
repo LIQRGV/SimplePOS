@@ -1,8 +1,6 @@
 require 'spec_helper'
 
 describe HomePresenter do
-  include_examples "a presenter"
-
   context "#quotes" do
     before do
       create :quote, quote: "First quote"

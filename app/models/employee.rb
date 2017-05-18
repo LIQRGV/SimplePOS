@@ -8,4 +8,18 @@ class Employee < ActiveRecord::Base
     end
     return false
   end
+
+  def is_supervisor?
+    role.each do |role|
+      return true if role.role_name == 'supervisor'
+    end
+    return false
+  end
+
+  def is_cashier?
+    role.each do |role|
+      return true if role.role_name == 'cashier'
+    end
+    return false
+  end
 end

@@ -36,4 +36,22 @@ describe Employee, type: :model do
       end
     end
   end
+
+  describe "#is_supervisor?" do
+    it "will return true if and only if the employee is supervisor" do
+      expect(supervisor.is_supervisor?).to eq true
+      [owner, cashier].each do |other_role|
+        expect(other_role.is_supervisor?).to eq false
+      end
+    end
+  end
+
+  describe "#is_cashier?" do
+    it "will return true if and only if the employee is cashier" do
+      expect(cashier.is_cashier?).to eq true
+      [owner, supervisor].each do |other_role|
+        expect(other_role.is_cashier?).to eq false
+      end
+    end
+  end
 end
