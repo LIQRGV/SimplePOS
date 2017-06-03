@@ -1,7 +1,19 @@
-ul
-  li
+div id="menu"
+  ul
     - @presenter.header_menu.each do |url_and_text_pair|
       - url = url_and_text_pair[:url]
       - text = url_and_text_pair[:text]
-      a href=url_for(url)
-        == text
+      li
+        a href=url_for(url)
+          == text
+
+
+div id="logo"
+  h1
+    a href="#"
+      | Apotek TRIDAYA BUANA SEJAHTERA (TBS)
+  a href="#"
+    small
+      | Web Based Information System
+
+div class="razd"

@@ -1,2 +1,52 @@
+div class="razd"
+
+div id="right"
+  div class="right_grad_box right_pad"
+    div class="right_bg_top"
+    div class="right_bg"
+      h5
+        | Informasi
+        - unless session[:user].nil?
+          table border="0"
+            tr
+              td
+                | Username
+              td
+                | :
+              td
+                == session[:user].username
+            tr
+              td
+                | Jabatan
+              td
+                | :
+              td
+                == session[:user].stringified_roles
+
+          br
+          | Jangan lupa
+          a href=auth_logout_path "logout"
+          | setelah menggunakan aplikasi
+          br
+          a href="#" "Ganti passsword saya"
+
+          - if session[:user].is_owner?
+            br
+            strong
+              a href="#" Kelola Akun User
+            strong
+              a href="#" Lihat Obat Kadaluarsa
+
+      br
+      br
+
+      div align="center"
+        object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=7,0,19,0" width="184" height="51" title="jam"
+          param name="movie" value="jam.swf"
+          param name="quality" value="high"
+          embed src="jam.swf" quality="high" pluginspage="http://www.macromedia.com/go/getflashplayer" type="application/x-shockwave-flash" width="184" height="51"
+
+    div class="right_bg_bot"
+
 p
   == "Copyright &copy; 2012 TBS Pharmacy. All Rights Reserved"
