@@ -9,6 +9,15 @@ describe AuthController, type: :controller do
     end
   end
 
+  describe "GET #logout" do
+    it "redirect to login page" do
+      get :logout, session: { username: "some_username", session_id: "bxtoaeaa" }
+      expect(response).to have_http_status(:redirect)
+      expect(response).to redirect_to(:auth_login)
+      expect(session).to be {}
+    end
+  end
+
   describe "POST #authorize" do
     let!(:employee) { create :employee, username: 'user', password: 'password' }
     context "when authorization success" do

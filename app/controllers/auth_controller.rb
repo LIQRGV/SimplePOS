@@ -3,6 +3,11 @@ class AuthController < ApplicationController
     render "auth/login"
   end
 
+  def logout
+    reset_session
+    redirect_to :auth_login
+  end
+
   def authorize
     # hashing will done on client side
     username = params[:username]

@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   get 'api/goods/similar' => 'api/goods#similar'
 
   get 'auth/login' => 'auth#login'
+  get 'auth/logout' => 'auth#logout'
   post 'auth/authorize' => 'auth#authorize'
 
   get 'home' => 'home#index'
