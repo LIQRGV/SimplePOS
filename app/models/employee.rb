@@ -22,4 +22,8 @@ class Employee < ActiveRecord::Base
     end
     return false
   end
+
+  def stringify_roles
+    role.map(&:role_name).join(",")
+  end
 end

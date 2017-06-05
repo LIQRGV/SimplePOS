@@ -22,15 +22,19 @@ describe AuthController, type: :controller do
     let!(:employee) { create :employee, username: 'user', password: 'password' }
     context "when authorization success" do
       it "will redirect to home and create session" do
-        post :authorize, username: 'user', password: 'password'
+        post :authorize, employee: {username: 'user', password: 'password'}
         expect(response).to have_http_status(:redirect)
         expect(response).to redirect_to(:home)
         expect(session[:user]).not_to eq nil
+        expected_sessions_keys = ["stringified_roles", "is_owner?", "is_supervisor?", "is_cashier?"]
+        expected_sessions_keys.each do |session_key|
+          expect(session[:user][session_key]).not_to eq nil
+        end
       end
     end
     context "when authorization failed" do
       it "won't moved from login page and have no session" do
-        post :authorize, username: 'wrong_user', password: 'wrong_password'
+        post :authorize, employee: { username: 'wrong_user', password: 'wrong_password'}
         expect(response).to have_http_status(:redirect)
         expect(response).to redirect_to(:auth_login)
         expect(session[:user]).to eq nil
